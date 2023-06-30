@@ -1,107 +1,578 @@
 <div class="d-flex">
-<div class="p-2 flex-fill " >
-  
- <button type="button" class="btn btn-primary" >
-    <i class="zmdi zmdi-border-color zmdi-hc-2x"></i>&nbsp; 
-  
-  </button> 
+  <div class="p-2 flex-fill ">
 
-</div> 
-</div>             
 
+    <button pButton pRipple type="button" icon="zmdi zmdi-border-color" class="p-button-rounded"
+      (click)="showResponsiveDialog()"></button>
+
+    <p-dialog header="Ajouter Offre" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}"
+      [style]="{width: '70vw'}" [draggable]="true" [resizable]="true">
+
+
+
+      <div class="alert alert-danger" *ngIf="errorMsg.length > 0">
+        <div *ngFor="let msg of errorMsg">
+          <span>{{msg}}</span>
+        </div>
+      </div>
+
+      <body class="bg-theme bg-theme8">
+
+
+
+        <form>
+
+
+
+
+          <div class="row mt-3">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+
+
+                  <div class="card-title"><i class="pi pi-book"></i> Critères du poste </div>
+                  <hr>
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #codeOffre type="text" class="form-control" placeholder="Entrer Code offre"
+                          name=" service" [(ngModel)]="offreDto.codeOffre">
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #poste type="text" class="form-control" placeholder="Entrer poste" name=" service"
+                          [(ngModel)]="offreDto.poste">
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #connaissances type="text" class="form-control" placeholder="Entrer les connaissance"
+                          name=" service" [(ngModel)]="offreDto.connaissances">
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select #niveauEtudes name="niveau Etudes" type="text" class="form-control form-control-rounded"
+                          [(ngModel)]="offreDto.niveauEtudes">
+                          <option value=""> Sélectionner niveau etudes</option>
+                          <option value="1 ans">Bac +3 </option>
+                          <option value="2 ans">Bac +5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select #experience name="experience" type="text" class="form-control form-control-rounded"
+                          id="1" [(ngModel)]="offreDto.experience">
+                          <option value=""> Sélectionner experience </option>
+                          <option value="1 ans">1 ans </option>
+                          <option value="2 ans">2ans</option>
+                          <option value="3 ans">3ans</option>
+                          <option value="4 ans">4ans</option>
+                          <option value="5 ans">5ans</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #criteres type="text" class="form-control" placeholder="Entrer critères" name=" criteres"
+                          [(ngModel)]="offreDto.criteres">
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #domaine type="text" class="form-control" placeholder="Entrer domaine" name=" domaine"
+                          [(ngModel)]="offreDto.domaine">
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #mission type="text" class="form-control" placeholder="Entrer Mission" name=" mission"
+                          [(ngModel)]="offreDto.mission">
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select #langues name=" langues" type="text" class="form-control form-control-rounded"
+                          [(ngModel)]="offreDto.langues">
+                          <option value=""> Sélectionner langues</option>
+                          <option value=" Anglais"> Anglais</option>
+                          <option value="Français"> Français </option>
+                        </select>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+
+                  <br>
+                  <div class="card-title"><i class="pi pi-info-circle"></i> Les informations du poste </div>
+                  <hr>
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #nbrARecruter type="number" class="form-control"
+                          placeholder="Entrer le nombre à recruter" name=" nbrARecruter"
+                          [(ngModel)]="offreDto.nbrARecruter">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select #cantrat name="pets" class="form-control form-control-rounded" id="input-7"
+                          [(ngModel)]="offreDto.cantrat">
+                          <option value=""> Sélectionner une Contrat</option>
+                          <option value="CDD">CDD</option>
+                          <option value="CDI">CDI</option>
+                          <option value="CIVP">CIVP</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #ville type="text" class="form-control input-shadow" placeholder="Entrer Ville"
+                          name=" ville" [(ngModel)]="offreDto.ville">
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #salaire type="number" class="form-control" placeholder="Entrer Salaire" name=" salaire"
+                          [(ngModel)]="offreDto.salaire">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input #dateExpiration type="datetime-local" class="form-control" placeholder="Entrer date d'expiration"
+                          name=" dateExpiration" [(ngModel)]="offreDto.dateExpiration">
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-4">
+                    <div class="col">
+                      <select class="form-control" name="cat" [(ngModel)]="recruteurDto.id">
+                        <option [value]="null">Selectionner une categorie</option>
+                        <option *ngFor="let rec of listRecruteur" [value]="rec.id">{{ rec.nom }} </option>
+                      </select>
+                    </div>
+                  </div> -->
+
+
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </form>
+      </body>
+
+
+
+      <br>
+      <ng-template pTemplate="footer">
+        <br>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-danger mr-3" (click)="annuler()">
+            <i class="pi pi-ban"></i>&nbsp;
+            Annuler
+          </button>
+          <button class="btn btn-primary" (click)="enregistrerOffre(checking())">
+            <i class="pi pi-save"></i>&nbsp;
+            Enregitrer
+          </button>
+        </div>
+
+      </ng-template>
+
+      <br>
+
+
+
+    </p-dialog>
+  </div>
+</div>
 
 
 <div class="row">
-    <div class="col-12 col-lg-12">
-      <div class="card">
-        <div class="card-header"> TABLES DES OFFRES
-         <div class="card-action">
-            <div class="dropdown">
+  <div class="col-12 col-lg-12">
+    <div class="card">
+      <div class="card-header"> TABLES DES OFFRES
+        <div class="card-action">
+          <div class="dropdown">
             <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-             <i class="icon-options"></i>
+              <i class="icon-options"></i>
             </a>
-             <div class="dropdown-menu dropdown-menu-right">
-             <a class="dropdown-item" href="javascript:void();">Action</a>
-             <a class="dropdown-item" href="javascript:void();">Another action</a>
-             <a class="dropdown-item" href="javascript:void();">Something else here</a>
-             <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="javascript:void();">Separated link</a>
-              </div>
-             </div>
-            </div>
+
+          </div>
         </div>
-          <div class="table-responsive">
-                <table class="table align-items-center table-flush table-borderless">
-                 <thead>
-                  <tr>
-                    <th>CODE OFFRE</th>
-                    <th>Poste</th>
-                    <th>Domaine</th>
-                    <th>Expérence</th>
-                    <th>Nombre</th>
-                    <th>Cantrat</th>
-                    <th>Salaire</th>
-                    <th>Ville</th>
-                    <th>Date expiration</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-items-cEntrer table-flush table-borderless">
+          <thead>
+            <tr>
+              <th>code offre</th>
+              <th>Poste</th>
+              <th>Domaine</th>
+              <th>Expérence</th>
+              <th>Nombre</th>
+              <th>Contrat</th>
+              <!-- <th>Salaire</th>
+              <th>Ville</th>
+              <th>Date expiration</th> -->
+              <th>Action</th>
+            </tr>
+          </thead>
 
 
-                  <tbody><tr>
-                   <td>OFFRE1</td>
-                   <td>ingénieur</td>
-                   <td>informatique</td>
-                   <td>2ans</td>
-                   <td>4 candiat</td>
-                   <td>1200DT</td>
-                   <td>Ariana</td>
-                   <td>20/12/2022</td>
-                   <td>CDI</td>
-                   <td>
-
-                    <div class="d-flex">
-                        <div class="p-2 flex-fill " >
-                          <button type="button" class="btn btn-danger">
-                            <i class="fas fa-cloud-upload-alt"></i>&nbsp;
-
-
-                            <i class="zmdi zmdi-delete zmdi-hc-2x" ></i>
-                          
-                          
-                          </button>&nbsp;&nbsp;
-                        
-                       
-                          <a href="admin/modifier-offre"> 
-                          <button type="button" class="btn btn-success">
-                            <i class="fas fa-cloud-download-alt"></i>&nbsp;
-                            <i class="zmdi zmdi-edit zmdi-hc-2x "></i>
-                            
-                          </button>
-                          </a>
-                        </div>
-                        
-                      </div>
-
-                   </td>
-
-                  </tr>
+          <tbody>
+            <tr *ngFor="let offre of listOffres">
+              <td>{{offre.codeOffre}}</td>
+              <td>{{offre.poste}}</td>
+              <td>{{offre.domaine}}</td>
+              <td>{{offre.experience}} </td>
+              <td>{{offre.nbrARecruter}}</td>
+              <td>{{offre.cantrat}}</td>
+              <!-- <td>{{offre.salaire}} DT</td>
+              <td>{{offre.ville}}</td>
+              <td>{{offre.dateExpiration}}</td> -->
+              <td>
 
 
 
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                 (click)="showDialogeditOffre()"  (click)="modifieroffre(offre.id)"></button>
 
-  
-                  
-                
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" data-toggle="modal"
+                  data-target="#modalDeleteOffre" (click)="selectOffrePourSupprimer(offre.id)"></button>
 
-                </tbody></table>
-              </div>
+
+              </td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+
+
+
+    </div>
+    <div class="row mb-3">
+
+      <div class=" col-md-12 text-cEntrer">
+        <!-- <app-pagination></app-pagination> -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+
+<div class="modal fade" id="modalDeleteOffre" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color:red;">Êtes vous-sûr de vouloir supprimer cette Offre ?</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="annulerSuppressionOffre()">
+          <i class="pi pi-ban"></i>&nbsp;Annuler</button>
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="confirmerEtSupprimerOffre()">
+          <i class="pi pi-trash"></i>&nbsp;Supprimer</button>
       </div>
     </div>
-   </div>
+  </div>
+</div>
 
 
 
-    
 
-	
+<!-- dialogue pour modifier un offre -->
+
+<div class="d-flex">
+  <div class="p-2 flex-fill ">
+
+
+
+    <p-dialog header="Modifier Offre" [(visible)]="editOffreDialogue" [breakpoints]="{'960px': '75vw'}"
+      [style]="{width: '70vw'}" [draggable]="true" [resizable]="true">
+
+      <body class="bg-theme bg-theme8">
+
+        <form  [formGroup]="formValue">
+
+          <div class="row mt-3">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body" >
+
+
+                  <div class="card-title"><i class="pi pi-book"></i> Critères du poste </div>
+                  <hr>
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="codeOffre" type="text" class="form-control" placeholder="Entrer Code offre"
+                          name=" service" [(ngModel)]="offreDto.codeOffre">
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="poste" type="text" class="form-control" placeholder="Entrer poste" name=" service"
+                          [(ngModel)]="offreDto.poste">
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="connaissances" type="text" class="form-control" placeholder="Entrer les connaissance"
+                          name=" service" [(ngModel)]="offreDto.connaissances">
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+
+                  <div class="form-group row">
+
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select formControlName="niveauEtudes" name="niveau Etudes" type="text" class="form-control form-control-rounded"
+                          [(ngModel)]="offreDto.niveauEtudes">
+                          <option value=""> Sélectionner niveau etudes</option>
+                          <option value="1 ans">Bac +3 </option>
+                          <option value="2 ans">Bac +5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select formControlName="experience" name="experience" type="text" class="form-control form-control-rounded"
+                          id="1" [(ngModel)]="offreDto.experience">
+                          <option value=""> Sélectionner experience </option>
+                          <option value="1 ans">1 ans </option>
+                          <option value="2 ans">2ans</option>
+                          <option value="3 ans">3ans</option>
+                          <option value="4 ans">4ans</option>
+                          <option value="5 ans">5ans</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="criteres" type="text" class="form-control" placeholder="Entrer critères" name=" criteres"
+                          [(ngModel)]="offreDto.criteres">
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="domaine" type="text" class="form-control" placeholder="Entrer domaine" name=" domaine"
+                          [(ngModel)]="offreDto.domaine">
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="mission" type="text" class="form-control" placeholder="Entrer Mission" name=" mission"
+                          [(ngModel)]="offreDto.mission">
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select formControlName="langues" name=" langues" type="text" class="form-control form-control-rounded"
+                          [(ngModel)]="offreDto.langues">
+                          <option value=""> Sélectionner langues</option>
+                          <option value=" Anglais"> Anglais</option>
+                          <option value="Français"> Français </option>
+                        </select>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+
+                  <br>
+
+
+                  <div class="card-title" > <i class="pi pi-info-circle"></i> Les informations du poste </div>
+                  <hr>
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="nbrARecruter" type="number" class="form-control"
+                          placeholder="Entrer le nombre à recruter" name=" nbrARecruter"
+                          [(ngModel)]="offreDto.nbrARecruter">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <select formControlName="cantrat" name="pets" class="form-control form-control-rounded" id="input-7"
+                          [(ngModel)]="offreDto.cantrat">
+                          <option value=""> Sélectionner une Contrat</option>
+                          <option value="CDD">CDD</option>
+                          <option value="CDI">CDI</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="ville" type="text" class="form-control input-shadow" placeholder="Entrer Ville"
+                          name=" ville" [(ngModel)]="offreDto.ville">
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="form-group row">
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="salaire" type="number" class="form-control" placeholder="Entrer Salaire" name=" salaire"
+                          [(ngModel)]="offreDto.salaire">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="col">
+                        <input formControlName="dateExpiration" type="date" class="form-control" placeholder="Entrer date d'expiration"
+                          name=" dateExpiration" [(ngModel)]="offreDto.dateExpiration">
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </form>
+      </body>
+
+
+
+      <br>
+      <ng-template pTemplate="footer">
+        <br>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-danger mr-3"  (click)="annuler()">
+            <i class="pi pi-ban"></i>&nbsp;  
+            Annuler
+          </button>
+          <button class="btn btn-primary"  (click)="modifierOffre1(checkingUpdate())">
+            <i class="pi pi-save"></i>&nbsp;
+            Enregitrer
+          </button>
+        </div>
+
+      </ng-template>
+
+      <br>
+
+
+
+    </p-dialog>
+  </div>
+
+</div>

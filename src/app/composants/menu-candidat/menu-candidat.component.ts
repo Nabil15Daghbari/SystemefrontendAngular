@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { Menu } from './menu';
 
 @Component({
@@ -9,57 +11,76 @@ import { Menu } from './menu';
 })
 export class MenuCandidatComponent implements OnInit {
 
-    public menuProperties: Array<Menu> = [
-      {
-      id: '1' ,
-      titre:'Offres et Demandes', 
-      icon :'zmdi zmdi-coffee text-danger' ,
-      url : '' ,
+  private lastSelectedMenu: Menu | undefined;
+
+
+
+  constructor(
+    private router: Router ,
+    private toastr: ToastrService
+
+  ) { }
+
+  ngOnInit(): void {
+    this.toastr.info('Bonjour bienvenu dans l\'espace Candidat');
+  }
+
+
+  public menuProperties: Array<Menu> = [
+   
+    {
+      id: '0' ,
+      titre:'offre Actuelles', 
+      icon :'zmdi zmdi-view-dashboard' ,
+      url : '',
       sousMenu: [
         {
-          id: '11',
-          titre: 'Offre actuelles',
-          icon: 'zmdi zmdi-share text-info',
-          url: ''
+          id: '01',
+          titre: 'offre Acutelles',
+          icon: 'zmdi zmdi-view-list-alt',
+          url: 'candidat/offre-actuelles'
         },
+        // {
+        //   id: '02',
+        //   titre: 'Postuler',
+        //   icon: 'zmdi zmdi-trending-up',
+        //   url: 'candidat/postuler'
+        // },
         {
-          id: '12',
-          titre: 'Mes Candidatures',
-          icon: 'zmdi zmdi-chart-donut text-success',
-          url: ''
-        }
+          id: '02',
+          titre: 'Mon Candidatures',
+          icon: 'pi pi-briefcase ',
+          url: 'candidat/candidatures'
+        } 
+        
       ]
     },
-      {
-        id: '2',
-        titre: 'Mon compte',
-        icon: '',
-        url: '',
-        sousMenu: [
-          {
-            id: '21' ,
-            titre:'Mon compte', 
-            icon :'fa-brands fa-twitter' ,
-            url : '' ,
-          },
-          {
-            id: '22' ,
-            titre:'Modifier compte', 
-            icon :'fa-brands fa-twitter' ,
-            url : '' ,
-          }
-        ]
-      }
-    ];
-  
-    private lastSelectedMenu: Menu | undefined;
-    constructor(
-      private router: Router
-    ) { }
-  
-    ngOnInit(): void {
+    {
+      id: '1',
+      titre: 'Mon compte',
+      icon: 'zmdi zmdi-face',
+      url: '',
+      sousMenu: [
+        {
+          id: '11' ,
+          titre:'Mon compte', 
+          icon :'zmdi zmdi-account-circle' ,
+          url : 'candidat/mon-profil' ,
+        },
+        // {
+        //   id: '12' ,
+        //   titre:'changer Mot de passe ', 
+        //   icon :'zmdi zmdi-account-circle' ,
+        //   url : 'candidat/changer-mot-de-passe ' ,
+        // }
+      ]
     }
-  
+   
+ 
+
+] ;
+
+   
     navigate(menu: Menu): void {
       if (this.lastSelectedMenu) {
         this.lastSelectedMenu.active = false;

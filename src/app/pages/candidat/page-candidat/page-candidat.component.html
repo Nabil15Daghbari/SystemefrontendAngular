@@ -1,7 +1,7 @@
-<div class="col">
+<div class="col" >
     <div class="row m-3">
-      <div class="col-md-8 p-0">
-        <h5>Liste des Candidat</h5>
+      <div class="col-md-8 p-0" >
+        <h5 >Liste des Candidats Admis</h5>
       </div>
       <div class="col-md-4 text-right">
       
@@ -10,12 +10,94 @@
         
       </div>
     </div>
-    <div class="col m-3">
-    <app-detail-candidat></app-detail-candidat>
-    <app-detail-candidat></app-detail-candidat>
-    <app-detail-candidat></app-detail-candidat>
-    <app-detail-candidat></app-detail-candidat>
-    <app-detail-candidat></app-detail-candidat>
+
+    
+    <div class="col m-3" *ngFor="let candidat of listDemandeAdmis">
+        <div class="row mb-1 mr-0 custom-border">
+            <div   class="col-md-2 custom-border-right  p-1 text-center mb-1 mt-1">
+              <img src="assets/images/profile.png" width="100px" height="100px">
+            </div>
+          
+          <!--  Details article-->
+            <div class="col-md-5 custom-border-right mb-1 mt-1 " >
+              <div class="col">
+                <div class="row">
+      
+                  <div class="col-md-1"><i class="icon-user"></i></div>
+                  <div class="col-md-11">{{candidat.nom}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1"><i class="icon-user"></i></div>
+                  <div class="col-md-11">{{candidat.prenom}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-credit-card "></i></div>
+                  <div class="col-md-11">{{candidat.cin}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-desktop"></i></div>
+                  <div class="col-md-11">{{candidat.poste}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-envelope"></i></div>
+                  <div class="col-md-10">{{candidat.email}}</div>
+                </div>
+               
+              </div>
+            </div>
+          
+            <div class="col-md-3 custom-border-right mb-1 mt-1 ">
+              <div class="col">
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-phone"></i></div>
+                  <div class="col-md-10">{{candidat.tele}}</div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-map-marker"></i></div>
+                  <div class="col-md-10">{{candidat.adresse}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1"><i class="pi pi-calendar"></i></div>
+                  <div class="col-md-10">{{candidat.dateDemande}}</div>
+                </div>
+                
+      
+              </div>
+            </div>
+          
+              <!-- <div>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4">
+                  <button type="submit" class="btn btn-link ">
+                    <i class="far fa-list-alt"></i>&nbsp;CONTRAT
+                  </button>
+                </div> -->
+               
+                <div   class="col-md-2 custom-border-right  p-3 text-center mb-1 mt-2"  >
+                  <button pButton pRipple label="Contrat" class="p-button-rounded p-button-success mr-2" (click)="findDemandeById(candidat.id)"><i class="pi pi-id-card" > &nbsp;</i></button>
+                  <br><br>
+                  <!-- <button pButton pRipple label="Refuser &nbsp;" class="p-button-rounded p-button-danger mr-2"  ><i class="zmdi zmdi-mail-send" > &nbsp;</i></button> -->
+        
+        
+                </div>
+          
+             
+          
+          
+              
+            </div>
+          
+        
+          
+          <!--  boutons action-->
+            
+
+
+
+
+
+
     
    
     

@@ -1,6 +1,9 @@
-
-
-	
+<!-- 
+<div class="alert alert-danger" *ngIf="errorMsg.length > 0">
+  <div *ngFor="let msg of errorMsg">
+    <span >{{msg}}</span>
+  </div>
+</div>
   <h5>AJOUTER OFFRE</h5>
 
     <div class="row mt-3">
@@ -12,63 +15,64 @@
             <form>
            <div class="form-group">
             <label for="input-1">Poste</label>
-            <input type="text" class="form-control" id="input-1" placeholder="Enter poste">
+            <input type="text" class="form-control" id="input-1" placeholder="Enter poste"
+            [(ngModel)]="offreDto.poste">
            </div>
            <div class="form-group">
             <label for="input-2">Mission</label>
-            <input type="text" class="form-control" id="input-2" placeholder="Enter Mission">
+            <input type="text" class="form-control" id="input-2" placeholder="Enter Mission"
+            [(ngModel)]="offreDto.mission">
            </div>
            <div class="form-group">
             <label for="input-3">Connaissance</label>
-            <input type="text" class="form-control" id="input-3" placeholder="Enter les connaissance">
+            <input type="text" class="form-control" id="input-3" placeholder="Enter les connaissance"
+            [(ngModel)]="offreDto.connaissances">
            </div>
            <div class="form-group">
             <label for="input-4">Niveau d'étude</label>
-            <input type="text" class="form-control" id="input-4" placeholder="Enter niveau d'étude">
+            <input type="text" class="form-control" id="input-4" placeholder="Enter niveau d'étude"
+            [(ngModel)]="offreDto.niveauEtudes">
            </div>
            <div class="form-group">
             <label for="input-5">Expérience</label>
-            <input type="text" class="form-control" id="input-5" placeholder="Enter expérience">
+            <input type="text" class="form-control" id="input-5" placeholder="Enter expérience"
+            [(ngModel)]="offreDto.experience" >
            </div>
 
            <div class="form-group">
             <label for="input-5">Critères</label>
-            <input type="text" class="form-control" id="input-5" placeholder="Enter critères">
+            <input type="text" class="form-control" id="input-5" placeholder="Enter critères"
+            [(ngModel)]="offreDto.criteres" >
            </div>
            
 
            <div class="form-group">
             <label for="input-5">Domaine</label>
-            <input type="text" class="form-control" id="input-5" placeholder="Enter domaine">
+            <input type="text" class="form-control" id="input-5" placeholder="Enter domaine"
+            [(ngModel)]="offreDto.domaine">
            </div>
 
            <div class="form-group">
             <label for="input-5">Langages du programmation</label>
-            <input type="text" class="form-control" id="input-5" placeholder="Enter langages du programmation">
+            <input type="text" class="form-control" id="input-5" placeholder="Enter langages du programmation"
+            [(ngModel)]="offreDto.langues">
            </div>
 
 
 
-          </form>
-         </div>
-         </div>
-      </div>
+         
 
-      <div class="col-lg-6">
-        <div class="card">
-           <div class="card-body">
-           <div class="card-title">Les informations du poste</div>
-           <hr>
-            <form>
+      
            <div class="form-group">
             <label for="input-6">Nombre à recruter</label>
-            <input type="text" class="form-control form-control-rounded" id="input-6" placeholder="Enter le nombre à recruter">
+            <input type="text" class="form-control form-control-rounded" id="input-6" placeholder="Enter le nombre à recruter"
+            [(ngModel)]="offreDto.nbrARecruter">
            </div>
 
 
            <div class="form-group">
             <label for="input-7">Contrat</label>
-            <select name="pets"  class="form-control form-control-rounded" id="input-7">
+            <select name="pets"  class="form-control form-control-rounded" id="input-7"  [(ngModel)]="offreDto.cantrat">
                 <option value="">--veuillez sélectionner une option--</option>
                 <option value="dog">CDD</option>
                 <option value="cat">CDI</option>         
@@ -80,24 +84,29 @@
 
            <div class="form-group">
             <label for="input-8">Ville</label>
-            <input type="text" class="form-control form-control-rounded" id="input-8" placeholder="Enter Ville  ">
+            <input type="text" class="form-control form-control-rounded" id="input-8" placeholder="Enter Ville  "
+            [(ngModel)]="offreDto.ville">
            </div>
            <div class="form-group">
             <label for="input-9">Salaire</label>
-            <input type="text" class="form-control form-control-rounded" id="input-9" placeholder="Enter Salaire">
+            <input type="text" class="form-control form-control-rounded" id="input-9" placeholder="Enter Salaire"
+            [(ngModel)]="offreDto.salaire">
            </div>
            <div class="form-group">
             <label for="input-10">Date d'expiration</label>
-            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date d'expiration">
+            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date d'expiration"
+            [(ngModel)]="offreDto.dateExpiration">
            </div>
            <div class="form-group">
             <label for="input-10">Date Orale</label>
-            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date orale">
+            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date orale" 
+            [(ngModel)]="offreDto.dateOrale">
            </div>
 
            <div class="form-group">
             <label for="input-10">Recruteur</label>
-            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date orale">
+            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="Enter date orale"
+            [(ngModel)]="offreDto.recruteur">
            </div>
 
 
@@ -108,14 +117,110 @@
             <label for="user-checkbox2">J'ACCEPTE LES TERMES ET CONDITIONS</label>
             </div>
            </div>
-           <div class="form-group">
+
+
+
+
+         
            
-            <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Ajouter</button>
-          
-          </div>
+
           </form>
          
+           
       </div>
-    </div><!--End Row-->
+    </div>
+  </div>
+</div>
 
-	
+
+
+    <div class="form-group">
+      <button  class="btn btn-light btn-round px-5" (click)="buttonClick('success')" (click)="enregistrerOffre()"  ><i class="icon-lock"></i> Ajouter</button>
+
+      <button class="btn btn-light btn-round px-5" (click)="cancel()">
+    
+        Annuler
+      </button>
+    
+
+    </div>
+
+<br>
+
+
+	 -->
+
+   <!-- <div class="col mb-3">
+    <div class="col-md-12">
+
+
+
+
+      <div class="col-md-12 mb-3 mt-3">
+        <h2>Nouvelle categorie</h2>
+      </div>
+
+
+
+
+      <div class="col-md-12">
+
+
+
+
+
+
+        <div class="alert alert-danger" *ngIf="errorMsg.length > 0">
+          <div *ngFor="let msg of errorMsg">
+            <span >{{msg}}</span>
+          </div>
+        </div>
+
+
+
+
+
+
+        <form>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="connaissances" name="codeCat" [(ngModel)]="offreDto.connaissances">
+            </div>
+          </div>
+
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="experience" name="designationCat" [(ngModel)]="offreDto.experience">
+            </div>
+          </div>
+
+
+        </form>
+
+
+      </div>
+
+
+
+    </div>
+
+    
+    <div class="col-md-12 text-right">
+      <button class="btn btn-danger mr-3" (click)="cancel()">
+        <i class="fas fa-ban"></i>&nbsp;
+        Annuler
+      </button>
+      <button class="btn btn-primary" (click)="enregistrerOffre()" >
+        <i class="fas fa-save"></i>&nbsp;
+        Enregitrer
+      </button>
+    </div>
+  
+  </div> -->
+    
+
+  

@@ -1,4 +1,7 @@
 import { Component,  } from '@angular/core';
+import { IndividualConfig } from 'ngx-toastr';
+import { NgToastService, toastPayload   } from 'src/app/service/services/ng-toast.service';
+
 
 
 @Component({
@@ -8,8 +11,7 @@ import { Component,  } from '@angular/core';
 })
 
 
-export class AppComponent   {
- 
- 
-  title = 'System_Recrutement';
+export class AppComponent   { 
+  constructor(private cs: NgToastService) { }
+   title = 'System_Recrutement';
 }

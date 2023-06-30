@@ -1,0 +1,156 @@
+<div class="row mt-3">
+    <div class="col-lg-4">
+        <div class="card profile-card-2">
+            <div class="card-img-block">
+                <img  src="assets/images/sss.png" alt="Card image cap">
+            </div>
+            <div class="col-md-10 mb-3 mt-3" >
+                <img [src]="connectedRecruteur.photo ? connectedRecruteur.photo :  'assets/images/profile.png' " class="rounded-circle" width="200px" height="200px">
+              </div>
+            <div class="card-body pt-5">
+                <!-- //<img src="assets/images/profile.png" alt="profile-image" class="profile"> -->
+              
+                <h5 class="card-title">{{connectedRecruteur.nom}}</h5>
+                <p class="card-text">{{connectedRecruteur.description}} </p>
+                <div class="icon-block">
+                    <a href="https://www.facebook.com/nabildaghbari.daghbari"><i
+                            class="fa fa-facebook bg-facebook text-white"></i></a>
+                    <a href="https://twitter.com/?lang=fr"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
+                    <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                </div>
+            </div>
+
+         
+        </div>
+
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
+
+                    <li class="nav-item">
+                        <a href="javascript:void();" data-target="#Profil" data-toggle="pill" class="nav-link"><i
+                                class="zmdi zmdi-face"></i> <span class="hidden-xs">Profil</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
+                                class="icon-note"></i> <span class="hidden-xs">Changer le mot de passe</span></a>
+                    </li>
+                </ul>
+                <div class="tab-content p-3">
+                    <div class="tab-pane active" id="profile">
+
+                    </div>
+                    <div class="tab-pane" id="Profil">
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+
+
+                                    <div class="row m-3">
+                                        <div>
+
+                                            <div class="card col-md-3">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Nom complet</th>
+                                                            <td>{{connectedRecruteur.nom}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Email</th>
+                                                            <td>{{connectedRecruteur.email}}</td>
+                                                        </tr>
+                                                        <!-- <tr>
+                                                            <th scope="row">telephone</th>
+                                                            <td></td>
+                                                        </tr> -->
+                                                        <tr>
+                                                            <th scope="row">Adresse</th>
+                                                            <td>{{connectedRecruteur.adresse1}} &nbsp; {{connectedRecruteur.ville}} &nbsp; {{connectedRecruteur.codePostale}}</td>
+                                                        </tr>
+                                                        <!-- <tr>
+                                                            <th scope="row">Entreprise</th>
+                                                            <td>Nom entreprise</td>
+                                                        </tr> -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="edit">
+                        <form>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                <div class="col-lg-9">
+                                    <h5>{{connectedRecruteur.email}}</h5>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Ancien mot de passe</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="password"  name="ancienmotdepasse" placeholder="Ancien mot de passe" 
+                                    [(ngModel)]="ancienMotDePasse">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Nouveau mot de passe</label>
+                                <div class="col-lg-9">
+                                    <input  type="password" class="form-control" name="nouveaumotdepasse" placeholder="Nouveau mot de passe"
+                                    [(ngModel)]="changerMotDePasseDto.motDePasse" >
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Confirmer mot de passe</label>
+                                <div class="col-lg-9">
+                                    <input type="password" class="form-control" name="confirmmotdepasse" placeholder="Confirmer mot de passe"
+                                    [(ngModel)]="changerMotDePasseDto.confirmMotDePasse">
+                                </div>
+                            </div>
+
+   
+                    
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-danger mr-3" (click)="cancel()">
+                                    <i class="pi pi-ban"></i>&nbsp;
+                                    Annuler
+                                </button>
+                                <button class="btn btn-primary" (click)="changerMotDePasseUtilisateur()">
+                                    <i class="pi pi-save"></i>&nbsp;
+                                    Enregitrer
+                                </button>
+                            </div>
+
+
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

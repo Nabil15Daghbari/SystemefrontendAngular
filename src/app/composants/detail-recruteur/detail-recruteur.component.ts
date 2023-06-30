@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailRecruteurComponent implements OnInit {
 
+  displayResponsive :boolean =false;
+
+
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+  
+
+
+  editRecruteur(){
+
+    this.displayResponsive= true ;
+
+  }
+
+
 
 }

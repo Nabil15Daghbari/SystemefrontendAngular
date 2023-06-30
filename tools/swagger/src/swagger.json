@@ -1,0 +1,1815 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger Api documentation for system recrutement en ligne application",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger Api Documentatio, for systeme du recrutement application",
+    "contact" : {
+      "name" : "Daghbari Nabil",
+      "email" : "nabil.daghbari5@gmail.com"
+    }
+  },
+  "basePath" : "http://localhost:8081",
+  "tags" : [ {
+    "name" : "affectation"
+  }, {
+    "name" : "authentication"
+  }, {
+    "name" : "candidat"
+  }, {
+    "name" : "contrat"
+  }, {
+    "name" : "demande"
+  }, {
+    "name" : "document"
+  }, {
+    "name" : "entretien"
+  }, {
+    "name" : "offre"
+  }, {
+    "name" : "photos"
+  }, {
+    "name" : "recruteur"
+  }, {
+    "name" : "service"
+  }, {
+    "name" : "utilisateurs"
+  } ],
+  "paths" : {
+    "/systemrecrutement/v1/affectation/All" : {
+      "get" : {
+        "tags" : [ "affectation" ],
+        "summary" : "rechercher les affectation dans BDD",
+        "description" : "Cette methode permet de chercher les affectation dans BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les affecation ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/AffectationDto"
+            }
+          },
+          "404" : {
+            "description" : "Aucun affectation n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/affectations/filter/candidat/{idCandidat}" : {
+      "get" : {
+        "summary" : "rechercher les affectation dans BDD",
+        "description" : "Cette methode permet de chercher les affectation dans BDD",
+        "operationId" : "findAffectationByIdCandidat",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les affecation ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/AffectationDto"
+            }
+          },
+          "404" : {
+            "description" : "Aucun affectation n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/auth/authenticate" : {
+      "post" : {
+        "tags" : [ "authentication" ],
+        "operationId" : "authenticate",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AuthenticationRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AuthenticationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/candidat/All" : {
+      "get" : {
+        "tags" : [ "candidat" ],
+        "summary" : "rechercher les articles dans BDD",
+        "description" : "Cette methode permet de chercher les article dans BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les candidats ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/CandidatDto"
+            }
+          },
+          "404" : {
+            "description" : "Aucun candidat n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/candidat/create" : {
+      "post" : {
+        "summary" : "Enregister un candidat ",
+        "description" : "Cette methode permet d'enregistrer ou modofier un candidat ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le candidat cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/CandidatDto"
+            }
+          },
+          "400" : {
+            "description" : "le candidat n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/candidat/delete/{idCandidat}" : {
+      "delete" : {
+        "summary" : "supprimer un candidat par ID  ",
+        "description" : "Cette methode permet de supprimer un candidat par son ID",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "le candidat a ete supprimer dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/CandidatDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/candidat/{idCondidat}" : {
+      "get" : {
+        "summary" : "rechercher un Condidat par ID  ",
+        "description" : "Cette methode permet de chercher   un Candidat par son ID",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le candidat a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/CandidatDto"
+            }
+          },
+          "404" : {
+            "description" : "Aucun candidat n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/contrat/All" : {
+      "get" : {
+        "summary" : "rechercher tous les contrats ",
+        "description" : "Cette methode permet de recupurer tous les contrat ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les contrats a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/contratsDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun contrats n'existe dans BDD avec l'ID fourni "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/contrat/create" : {
+      "post" : {
+        "tags" : [ "contrat" ],
+        "summary" : "Enregister un contrat ",
+        "description" : "Cette methode permet d'enregistrer ou modofier un contrat ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/contratsDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le contrat cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/contratsDto"
+            }
+          },
+          "400" : {
+            "description" : "le contrat n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/contrat/delete/{idContrat}" : {
+      "delete" : {
+        "summary" : "supprimer un contrat par ID",
+        "description" : "Cette methode permet de supprimer un contrats par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "le contrat  a ete supprimer dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/contratsDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/contrat/{idContrat}" : {
+      "get" : {
+        "tags" : [ "contrat" ],
+        "summary" : "rechercher un contrat par son ID",
+        "description" : "Cette methode permet de chercher un contrat ",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idContrat",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le contrat a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/contratsDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun contrat  n'existe dans BDD avec l'ID fourni "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/demande/All" : {
+      "get" : {
+        "tags" : [ "demande" ],
+        "summary" : "Enregister une demande ",
+        "description" : "Cette methode permet d'enregistrer ou modofier une demande ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le demande a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/demandesDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun demande n'existe dans BDD avec l'ID fourni "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/demande/create" : {
+      "post" : {
+        "tags" : [ "demande" ],
+        "summary" : "Enregister une demande ",
+        "description" : "Cette methode permet d'enregistrer ou modofier une demande ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/demandesDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le demande cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/demandesDto"
+            }
+          },
+          "400" : {
+            "description" : "le demande n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/demande/delete/{idDemande}" : {
+      "delete" : {
+        "tags" : [ "demande" ],
+        "summary" : "supprimer une demande par ID ",
+        "description" : "Cette methode permet de supprimer  une demande par son ID",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idDemande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le demande a ete supprimer dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/demandesDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/demande/{idDemande}" : {
+      "get" : {
+        "tags" : [ "demande" ],
+        "summary" : "rechercher une demande par son ID ",
+        "description" : "Cette methode permet de chercher  une demande par son ID",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idDemande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le demande a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/demandesDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun demande n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/downloadFile/{fileId}" : {
+      "get" : {
+        "tags" : [ "document" ],
+        "operationId" : "downloadFile",
+        "parameters" : [ {
+          "name" : "fileId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ByteArrayResource"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/entretien/All" : {
+      "get" : {
+        "tags" : [ "entretien" ],
+        "summary" : "rechercher les entretien ",
+        "description" : "Cette methode permet de chercher les entretiens dans BDD ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les entretien  ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/entretienDto"
+            }
+          },
+          "400" : {
+            "description" : " Aucun entretienn'existe dans BDD avec l'ID fourni "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/entretien/create" : {
+      "post" : {
+        "summary" : "Enregister un entretien ",
+        "description" : "Cette methode permet d'enregistrer ou modofier un entretien ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "l'entretien cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/entretienDto"
+            }
+          },
+          "400" : {
+            "description" : "l'entretien n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/entretien/delete/{idEntretien}" : {
+      "delete" : {
+        "tags" : [ "entretien" ],
+        "summary" : "supprimer un entretien ",
+        "description" : "Cette methode permet de supprimer un entretien par son id ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idEntretien",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'entretien a ete supprimer dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/entretienDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/entretien/{idEntretien}" : {
+      "get" : {
+        "tags" : [ "entretien" ],
+        "summary" : "rechercher un entretien ",
+        "description" : "Cette methode permet de chercher un entretien par son ID ",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idEntretien",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'entretien a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/entretienDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun entretien n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/get" : {
+      "get" : {
+        "tags" : [ "document" ],
+        "operationId" : "get",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/All" : {
+      "get" : {
+        "summary" : "rechercher les offres dans BDD ",
+        "description" : "Cette methode permet de chercher les offres",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les offres ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/offresDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun offre n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/createOffre" : {
+      "post" : {
+        "summary" : "Enregister une offre ",
+        "description" : "Cette methode permet d'enregistrer ou modofier une offre ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "l'offre cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/offresDto"
+            }
+          },
+          "400" : {
+            "description" : "l'offre n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/delete/{idOffre}" : {
+      "delete" : {
+        "tags" : [ "offre" ],
+        "summary" : "Supprimer une offre ",
+        "description" : "Cette methode permet supprimer une offre ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idOffre",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'offre a ete supprimer dans l BD ",
+            "schema" : {
+              "$ref" : "#/definitions/offresDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/filter/{codeOffre}" : {
+      "get" : {
+        "tags" : [ "offre" ],
+        "summary" : "Rechercher un offre par CODE",
+        "description" : "Cette methode permet de chercher un offre par son CODE",
+        "operationId" : "findOffresByCodeOffre",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "codeOffre",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "offre a ete trouve dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/offresDto"
+            }
+          },
+          "404" : {
+            "description" : "Aucun offre n'existe dans la BDD avec le CODE fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/update/{id}" : {
+      "put" : {
+        "tags" : [ "offre" ],
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Offres"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Offres"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/offre/{idOffre}" : {
+      "get" : {
+        "summary" : "rechercher une offre par son ID",
+        "description" : "Cette methode permet chercher une offre par son ID ",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "l'offre a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/offresDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun offre n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/photos/{id}/{title}/{context}" : {
+      "post" : {
+        "tags" : [ "photos" ],
+        "operationId" : "savePhoto",
+        "parameters" : [ {
+          "name" : "file",
+          "in" : "formData",
+          "required" : true,
+          "type" : "file"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/recruteur/All" : {
+      "get" : {
+        "summary" : "rechercher les recruteurs dans l BDD ",
+        "description" : "Cette methode permet de chercher les recruteurs  ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les recruteurs ont ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/recruteurDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun recruteur n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/recruteur/create" : {
+      "post" : {
+        "summary" : "Enregister un recruteur ",
+        "description" : "Cette methode permet d'enregistrer ou modofier un recruteur ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le recruteur cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/recruteurDto"
+            }
+          },
+          "400" : {
+            "description" : "le recruteur n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/recruteur/delete/{idRecruteur}" : {
+      "delete" : {
+        "summary" : "Supprimer un recruteur par son ID ",
+        "description" : "Cette methode permet de supprimer un recruteur par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "le recruteur  a ete supprimer dans l BDD",
+            "schema" : {
+              "$ref" : "#/definitions/recruteurDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/recruteur/update/{id}" : {
+      "put" : {
+        "tags" : [ "recruteur" ],
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/recruteur"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/recruteur"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/recruteur/{idRecruteur}" : {
+      "get" : {
+        "summary" : "rechercher un recruteupar son ID ",
+        "description" : "Cette methode permet de chercher un recruteur par son ID dna l BDD",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le recruteur a ete trouvee dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/recruteurDto"
+            }
+          },
+          "400" : {
+            "description" : "Aucun recruteur n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/service/All" : {
+      "get" : {
+        "summary" : "rechercher les articles dans BDD",
+        "description" : "Cette methode permet de chercher les article dans BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les candidats ont ete trouvee dans l BD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ServicesDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "Aucun candidat n'existe dans BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/service/create" : {
+      "post" : {
+        "summary" : "Enregister un candidat ",
+        "description" : "Cette methode permet d'enregistrer ou modofier un candidat ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "le candidat cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/ServicesDto"
+            }
+          },
+          "400" : {
+            "description" : "le candidat n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/service/delete/{idService}" : {
+      "delete" : {
+        "tags" : [ "service" ],
+        "summary" : "supprimer un candidat par ID  ",
+        "description" : "Cette methode permet de supprimer un candidat par son ID",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idService",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le candidat a ete supprimer dans l BD",
+            "schema" : {
+              "$ref" : "#/definitions/ServicesDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/service/update/{id}" : {
+      "put" : {
+        "tags" : [ "service" ],
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Services"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Services"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/uploadFiles" : {
+      "post" : {
+        "tags" : [ "document" ],
+        "summary" : "Enregister document ",
+        "description" : "Cette methode permet d'enregistrer ou modofier une document ",
+        "operationId" : "uploadMultipleFiles",
+        "consumes" : [ "multipart/form-data" ],
+        "produces" : [ "multipart/form-data" ],
+        "parameters" : [ {
+          "name" : "files",
+          "in" : "formData",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "file"
+          },
+          "collectionFormat" : "multi"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "le doc cree / modifie",
+            "schema" : {
+              "$ref" : "#/definitions/Doc"
+            }
+          },
+          "400" : {
+            "description" : "le doc n'est pas valide "
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/all" : {
+      "get" : {
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/utilisateurDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/create" : {
+      "post" : {
+        "tags" : [ "utilisateurs" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/utilisateurDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/utilisateurDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/delete/{idUtilisateur}" : {
+      "delete" : {
+        "operationId" : "delete",
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/find/{email}" : {
+      "get" : {
+        "operationId" : "findByEmail",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/utilisateurDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/update/password" : {
+      "post" : {
+        "tags" : [ "utilisateurs" ],
+        "operationId" : "changerMotDePasse",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangerMotDePasseUtilisateurDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/utilisateurDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1/utilisateurs/{idUtilisateur}" : {
+      "get" : {
+        "operationId" : "findById",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/utilisateurDto"
+            }
+          }
+        }
+      }
+    },
+    "/systemrecrutement/v1demande/update/etatDemande/{idDemande}/{etatDemande}" : {
+      "patch" : {
+        "tags" : [ "demande" ],
+        "summary" : "modifier etat demande par ID ",
+        "description" : "Cette methode permet de modifier l'etat  d'une  demande par son ID",
+        "operationId" : "updateEtatDemande",
+        "parameters" : [ {
+          "name" : "idDemande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "etatDemande",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "ENCOURS", "ADMIS", "LISTEATTENTE", "CONVOQUUEPOURENTRETIEN" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'etet du deande a ete modifier ",
+            "schema" : {
+              "$ref" : "#/definitions/demandesDto"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Admin" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "login" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "offres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Offres"
+          }
+        },
+        "telephone" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AdminDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "login" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "offres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/offresDto"
+          }
+        },
+        "telephone" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Adresse" : {
+      "type" : "object",
+      "properties" : {
+        "adresse1" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AdresseDto" : {
+      "type" : "object",
+      "properties" : {
+        "adresse1" : {
+          "type" : "string"
+        },
+        "ville" : {
+          "type" : "string"
+        },
+        "codePostale" : {
+          "type" : "string"
+        },
+        "pays" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Affectation" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "dateAffectation" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "candidat" : {
+          "$ref" : "#/definitions/Candidat"
+        },
+        "services" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Services"
+          }
+        }
+      }
+    },
+    "AffectationDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "dateAffectation" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "candidat" : {
+          "$ref" : "#/definitions/CandidatDto"
+        },
+        "services" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ServicesDto"
+          }
+        }
+      }
+    },
+    "AuthenticationRequest" : {
+      "type" : "object",
+      "properties" : {
+        "login" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthenticationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "accessToken" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ByteArrayResource" : {
+      "type" : "object",
+      "properties" : {
+        "byteArray" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "format" : "byte"
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "inputStream" : {
+          "$ref" : "#/definitions/InputStream"
+        },
+        "open" : {
+          "type" : "boolean"
+        },
+        "file" : {
+          "type" : "file"
+        },
+        "readable" : {
+          "type" : "boolean"
+        },
+        "url" : {
+          "type" : "string",
+          "format" : "url"
+        },
+        "filename" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string",
+          "format" : "uri"
+        }
+      }
+    },
+    "Candidat" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "cin" : {
+          "type" : "string"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/Adresse"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "dateNaissance" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "tele" : {
+          "type" : "string"
+        },
+        "demandes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/demandes"
+          }
+        },
+        "affectation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Affectation"
+          }
+        },
+        "login" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CandidatDto" : {
+      "type" : "object",
+      "properties" : {
+        "cin" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "dateNaissance" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "tele" : {
+          "type" : "string"
+        },
+        "demandes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/demandesDto"
+          }
+        },
+        "affectation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AffectationDto"
+          }
+        },
+        "login" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ChangerMotDePasseUtilisateurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "motDePasse" : {
+          "type" : "string"
+        },
+        "confirmMotDePasse" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Doc" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "docName" : {
+          "type" : "string"
+        },
+        "docType" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "format" : "byte"
+          }
+        }
+      }
+    },
+    "InputStream" : {
+      "type" : "object"
+    },
+    "Offres" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "codeOffre" : {
+          "type" : "string"
+        },
+        "poste" : {
+          "type" : "string"
+        },
+        "mission" : {
+          "type" : "string"
+        },
+        "connaissances" : {
+          "type" : "string"
+        },
+        "niveauEtudes" : {
+          "type" : "string"
+        },
+        "formation" : {
+          "type" : "string"
+        },
+        "experience" : {
+          "type" : "string"
+        },
+        "criteres" : {
+          "type" : "string"
+        },
+        "domaine" : {
+          "type" : "string"
+        },
+        "langues" : {
+          "type" : "string"
+        },
+        "nbrARecruter" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "cantrat" : {
+          "type" : "string"
+        },
+        "ville" : {
+          "type" : "string"
+        },
+        "dateExpiration" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "salaire" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "demandes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/demandes"
+          }
+        },
+        "recruteur" : {
+          "$ref" : "#/definitions/recruteur"
+        },
+        "admin" : {
+          "$ref" : "#/definitions/Admin"
+        }
+      }
+    },
+    "RolesDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "roleName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Services" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nomServices" : {
+          "type" : "string"
+        },
+        "affectation" : {
+          "$ref" : "#/definitions/Affectation"
+        }
+      }
+    },
+    "ServicesDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nomServices" : {
+          "type" : "string"
+        },
+        "affectation" : {
+          "$ref" : "#/definitions/AffectationDto"
+        }
+      }
+    },
+    "contratsDto" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "poste" : {
+          "type" : "string"
+        },
+        "dateDebut" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "salaire" : {
+          "type" : "number"
+        },
+        "signature" : {
+          "type" : "string"
+        }
+      }
+    },
+    "demandes" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "dateDemande" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "etatDemande" : {
+          "type" : "string",
+          "enum" : [ "ENCOURS", "ADMIS", "LISTEATTENTE", "CONVOQUUEPOURENTRETIEN" ]
+        },
+        "candidat" : {
+          "$ref" : "#/definitions/Candidat"
+        },
+        "offre" : {
+          "$ref" : "#/definitions/Offres"
+        }
+      }
+    },
+    "demandesDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "dateDemande" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "candidat" : {
+          "$ref" : "#/definitions/CandidatDto"
+        },
+        "offre" : {
+          "$ref" : "#/definitions/offresDto"
+        },
+        "etatDemande" : {
+          "type" : "string",
+          "enum" : [ "ENCOURS", "ADMIS", "LISTEATTENTE", "CONVOQUUEPOURENTRETIEN" ]
+        },
+        "demandeAccepte" : {
+          "type" : "boolean"
+        },
+        "statutCondidature" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "entretienDto" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nomCandidat" : {
+          "type" : "string"
+        },
+        "prenomCandidat" : {
+          "type" : "string"
+        },
+        "dateEntretien" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "email" : {
+          "type" : "string"
+        }
+      }
+    },
+    "offresDto" : {
+      "type" : "object",
+      "properties" : {
+        "codeOffre" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "poste" : {
+          "type" : "string"
+        },
+        "mission" : {
+          "type" : "string"
+        },
+        "connaissances" : {
+          "type" : "string"
+        },
+        "niveauEtudes" : {
+          "type" : "string"
+        },
+        "formation" : {
+          "type" : "string"
+        },
+        "experience" : {
+          "type" : "string"
+        },
+        "criteres" : {
+          "type" : "string"
+        },
+        "domaine" : {
+          "type" : "string"
+        },
+        "langues" : {
+          "type" : "string"
+        },
+        "nbrARecruter" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "cantrat" : {
+          "type" : "string"
+        },
+        "ville" : {
+          "type" : "string"
+        },
+        "dateExpiration" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "salaire" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "admin" : {
+          "$ref" : "#/definitions/AdminDto"
+        },
+        "recruteur" : {
+          "$ref" : "#/definitions/recruteurDto"
+        },
+        "demandes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/demandesDto"
+          }
+        }
+      }
+    },
+    "recruteur" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "lastModifiedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "cin" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/Adresse"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "tele" : {
+          "type" : "string"
+        },
+        "login" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "offres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Offres"
+          }
+        },
+        "poste" : {
+          "type" : "string"
+        }
+      }
+    },
+    "recruteurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "cin" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "tele" : {
+          "type" : "string"
+        },
+        "login" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "offres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/offresDto"
+          }
+        },
+        "poste" : {
+          "type" : "string"
+        }
+      }
+    },
+    "utilisateurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "dateDeNaissance" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "moteDePasse" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "roles" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RolesDto"
+          }
+        }
+      }
+    }
+  }
+}

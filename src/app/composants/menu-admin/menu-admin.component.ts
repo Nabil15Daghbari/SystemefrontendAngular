@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { Menu } from './menu';
 
 @Component({
@@ -18,7 +20,7 @@ export class MenuAdminComponent implements OnInit {
       url : '',
       sousMenu: [
         {
-          id: '11',
+          id: '01',
           titre: 'Statistique',
           icon: 'zmdi zmdi-trending-up',
           url: 'admin/Statistiques'
@@ -29,28 +31,33 @@ export class MenuAdminComponent implements OnInit {
     {
     id: '1' ,
     titre:'Gestion des Offres', 
-    icon :'zmdi zmdi-coffee text-danger' ,
-    url : '' ,
-    sousMenu: [
-      {
-        id: '11',
-        titre: 'Liste Offres',
-        icon: 'zmdi zmdi-view-list',
-        url: 'admin/Liste-Offre'
-      },
-      {
-        id: '12',
-        titre: 'Ajouter Offre',
-        icon: 'zmdi zmdi-border-color',
-        url: 'admin/ajouter-offre'
-      },
-      {
-        id: '13',
-        titre: 'Modifier Offre',
-        icon: 'zmdi zmdi-format-list-bulleted',
-        url: 'admin/modifier-offre'
-      }
-    ]
+    icon :'zmdi zmdi-view-comfy' ,
+    url : 'admin/Liste-Offre' ,
+     sousMenu: [
+       {
+         id: '11',
+         titre: 'Liste Offres',
+         icon: 'zmdi zmdi-view-list',
+         url: 'admin/Liste-Offre'
+       },
+    //    {
+    //      id: '12',
+    //     titre: 'get offre par id recruteur',
+    //      icon: 'zmdi zmdi-border-color',
+    //     url: ''
+    //   },
+    //    {
+    //      id: '13',
+    //     titre: 'ajouter offre',
+    //     url: 'admin/ajouter-offre'
+    //  }
+    //   {
+    //     id: '13',
+    //     titre: 'Modifier Offre',
+    //     icon: 'zmdi zmdi-format-list-bulleted',
+    //     url: 'admin/modifier-offre'
+    //   }
+     ]
   },
     {
       id: '2',
@@ -64,12 +71,12 @@ export class MenuAdminComponent implements OnInit {
           icon :'zmdi zmdi-format-list-bulleted' ,
           url : 'admin/Liste-Recruteur' ,
         },
-        {
-          id: '22' ,
-          titre:'Ajouter Recruteur', 
-          icon :'zmdi zmdi-accounts-add' ,
-          url : '' ,
-        }
+        // {
+        //   id: '22' ,
+        //   titre:'Ajouter Recruteur', 
+        //   icon :'zmdi zmdi-accounts-add' ,
+        //   url : 'admin/Ajouter-Recruteur' ,
+        // }
       ]
     
     
@@ -85,15 +92,15 @@ export class MenuAdminComponent implements OnInit {
         {
           id: '31' ,
           titre:'Liste Candidats Admis', 
-          icon :'fa-brands fa-twitter' ,
+          icon :'pi pi-users' ,
           url : 'admin/Liste-Candidat' ,
         },
-        {
-          id: '32' ,
-          titre:'List Candidat/Services', 
-          icon :'fa-brands fa-twitter' ,
-          url : 'admin/List-candidat par servies' ,
-        }
+        // {
+        //   id: '32' ,
+        //   titre:'List Candidat/Services', 
+        //   icon :'pi pi-user',
+        //   url : 'admin/List-candidat par servies' ,
+        // }
         
       ]
     
@@ -109,27 +116,27 @@ export class MenuAdminComponent implements OnInit {
     {
       id: '4',
       titre: 'Gestion Services ',
-      icon: '',
+      icon: 'zmdi zmdi-sort-amount-asc',
       url: '',
       sousMenu: [
         {
           id: '41' ,
           titre:'Liste des Services', 
-          icon :'fa-brands fa-twitter' ,
+          icon :'zmdi zmdi-format-list-numbered' ,
           url : 'admin/Liste-servies' ,
         },
-        {
-          id: '42' ,
-          titre:'Ajouter Services', 
-          icon :'fa-brands fa-twitter' ,
-          url : 'admin/ajouter-servies' ,
-        },
-        {
-          id: '43' ,
-          titre:'Modifier Services', 
-          icon :'fa-brands fa-twitter' ,
-          url : 'admin/modifier-servies' ,
-        }, 
+        // {
+        //   id: '42' ,
+        //   titre:'Ajouter Services', 
+        //   icon :'fa-brands fa-twitter' ,
+        //   url : 'admin/ajouter-servies' ,
+        // },
+        // {
+        //   id: '43' ,
+        //   titre:'Modifier Services', 
+        //   icon :'fa-brands fa-twitter' ,
+        //   url : 'admin/modifier-servies' ,
+        // }, 
         
       ]
     } ,
@@ -144,17 +151,21 @@ export class MenuAdminComponent implements OnInit {
           titre:'Mon compte', 
           icon :'zmdi zmdi-account-circle' ,
           url : 'admin/Mon-profil' ,
-        }
+         },
+        
       ]
     }
   ];
 
   private lastSelectedMenu: Menu | undefined;
   constructor(
-    private router: Router
+    private router: Router ,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
+    this.toastr.info('Bonjour dans l\'espace Admin');
+
   }
 
   navigate(menu: Menu): void {

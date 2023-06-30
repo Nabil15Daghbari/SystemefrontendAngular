@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OffresDto } from 'src/sr-api/src/models/offres-dto';
 
 @Component({
   selector: 'app-modifier-offre',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifierOffreComponent implements OnInit {
 
-  constructor() { }
+  offreDto: OffresDto = {};
+  editOffreDialogue :boolean =false;
+
+
+  constructor(private router: Router ) { }
 
   ngOnInit(): void {
   }
+
+
+  cancel(): void {
+    this.router.navigate(['admin/Liste-Offre']);
+  }
+
+
+     showeditOffreDialogue(){
+
+     this.editOffreDialogue =true
+
+   } ;
 
 }

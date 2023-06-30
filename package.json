@@ -6,11 +6,18 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:local": "npm run sr-api && ng serve -- --proxyConfig=proxy.conf.json",
+    "sr-api": "npm run sr-api:create-dist && npm run sr-api:download && npm run sr-api:extract && npm run sr-api:swagger-gen",
+    "sr-api:create-dist": "mkdirp tools/swagger/dist  &&  mkdirp tools/swagger/src",
+    "sr-api:download": "cp C:/Users/nabil/eclipse-workspace/SystemRecrutement/target/SystemRecrutement-0.0.1-SNAPSHOT.jar  tools/swagger/dist && cp C:/Users/nabil/eclipse-workspace/SystemRecrutement/target/swagger.json tools/swagger/src",
+    "sr-api:extract": "node ./tools/swagger/src/swagger.json 0.0.1-SNAPSHOT",
+    "sr-api:swagger-gen": "./node_modules/.bin/ng-swagger-gen -i ./tools/swagger/src/swagger.json -o src/sr-api/src"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^14.2.6",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
@@ -18,10 +25,22 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@fullcalendar/angular": "^5.11.2",
+    "@fullcalendar/daygrid": "^5.11.3",
+    "@fullcalendar/interaction": "^5.11.3",
+    "@syncfusion/ej2-angular-schedule": "^20.3.49",
     "bootstrap": "^5.2.1",
     "font-awesome": "^4.7.0",
+    "ng-packagr": "^5.3.0",
+    "chart.js": "^2.9.4",
+    "chartjs-plugin-annotation": "0.5.7",
+    "chartjs-plugin-datalabels": "^0.6.0",
+    "ng2-charts": "^2.4.2",
+    
+    "ng-swagger-gen": "^1.7.0-b",
+    "ngx-toastr": "^14.3.0",
     "primeicons": "^6.0.1",
-    "primeng": "^14.1.1",
+    "primeng": "^13.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -38,6 +57,8 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^5.3.0",
+    "ng-swagger-gen": "^1.7.0-b",
     "typescript": "~4.6.2"
   }
 }

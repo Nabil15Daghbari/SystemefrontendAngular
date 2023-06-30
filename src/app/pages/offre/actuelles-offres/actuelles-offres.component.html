@@ -1,0 +1,302 @@
+<div class="row mt-3">
+  <div class="col-lg-12">
+    <div class="card" *ngFor="let offre of listOffres">
+      <div class="card-body">
+        <div class="card-title">
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col">
+                {{offre.codeOffre}}: {{offre.poste}}
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="col">
+                Date Expération : <small class="text-success">{{offre.dateExpiration}}</small>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <hr>
+
+
+
+
+        <div>
+          <h5>mission : </h5>
+          <p>{{offre.mission}}</p>
+        </div>
+
+
+
+        <div>
+          <h6>
+            Domaine : <small class="text-muted">{{offre.domaine}}</small>
+            &nbsp; Poste : <small class="text-muted">{{offre.poste}}</small>
+            &nbsp;Expérience : <small class="text-muted">{{offre.experience}}</small>
+            &nbsp; Compétences : <small class="text-muted">{{offre.connaissances}} </small>
+            &nbsp; Nombre de candidatures : <small class="text-muted">{{offre.nbrARecruter}} </small>
+            &nbsp;Contrat : <small class="text-muted">{{offre.cantrat}} </small>
+            &nbsp; Salaire : <small class="text-muted">{{offre.salaire}} &nbsp; DT </small>
+            &nbsp; Ville : <small class="text-muted">{{offre.ville}} </small>
+
+
+
+
+          </h6>
+
+        </div>
+
+
+        <hr>
+
+        <div class="form-group row">
+
+          <div class="col-lg-10">
+            <div class="col">
+            </div>
+          </div>
+
+
+          <div class="col-lg-0">
+            <div class="col">
+              <button pButton pRipple type="button" class="btn btn-light btn-round px-3" data-target="#modalDeleteCat"
+                (click)="showResponsiveDialog()" (click)="selectOffrePourPostuler(offre.id)">
+                postuler</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<p-dialog header="POSTULER POUR UN OFFRE" [(visible)]="displayResponsive" id="modalDeleteCat"
+  [breakpoints]="{'960px': '75vw'}" [style]="{width: '70vw'}" [draggable]="true" [resizable]="true ">
+
+  <div class="alert alert-danger" *ngIf="errorMsg.length > 0">
+    <div *ngFor="let msg of errorMsg">
+      <span>{{msg}}</span>
+    </div>
+  </div>
+
+  <body class="bg-theme bg-theme8">
+
+
+
+    <form>
+
+      <div class="row mt-3">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="card-title">information personnelle</div>
+              <hr>
+              <form>
+                <div class="form-group row">
+
+                  <div class="col-lg-4">
+                    <div>
+                      <label>Domaine:</label>
+                      {{offreDto.domaine}}
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div>
+                      <label>Contrat :</label>
+                      {{offreDto.cantrat}}
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-4">
+                    <div>
+                      <label>Salaire:</label>
+                      {{offreDto.salaire}}
+                    </div>
+                  </div>
+
+
+
+
+
+
+                </div>
+
+
+                <div class="form-group row">
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #cin type="text" class="form-control" placeholder="Entrer cin" name=" cin"
+                        [(ngModel)]="demandeDto.cin">
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #nom type="text" class="form-control" placeholder="Entrer nom" name=" nom"
+                        [(ngModel)]="demandeDto.nom">
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #prenom type="text" class="form-control" placeholder="Entrer prenom" name=" prenom"
+                        [(ngModel)]="demandeDto.prenom">
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+
+
+                <div class="form-group row">
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #email type="text" class="form-control" placeholder="Entrer email" name=" email"
+                        [(ngModel)]="demandeDto.email">
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #poste type="text" class="form-control" placeholder="Entrer poste" name=" poste"
+                        [(ngModel)]="demandeDto.poste">
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #adresse type="text" class="form-control" placeholder="Entrer adresse" name=" adresse"
+                        [(ngModel)]="demandeDto.adresse">
+                    </div>
+                  </div>
+
+
+
+
+                </div>
+
+
+                <div class="form-group row">
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #tele type="text" class="form-control" placeholder="Entrer telephone" name=" Téléphone"
+                        [(ngModel)]="demandeDto.tele">
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <input #dateDemande type="datetime-local" class="form-control" placeholder="Entrer date demande"
+                        name="Date demande" [(ngModel)]="demandeDto.dateDemande">
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-4">
+                    <div class="col">
+                      <select class="form-control" name="cat" [(ngModel)]="offreDto.id">
+                        <option [value]="null">Selectionner une offre</option>
+                        <option *ngFor="let offre of listOffres" [value]="offre.id">{{ offre.codeOffre }} </option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+                <br>
+
+                <div class="card-title">Documents</div>
+                <hr>
+
+
+                <div class="form-group row">
+
+                  <div class="col-lg-8">
+                    <div class="col">
+                      <label> CV </label>
+                      <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control" placeholder="Enter poste" name=" cv">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                  <div class="col-lg-8">
+                    <div class="col">
+                      <label> Lettre du Motivation </label>
+                      <input type="file" accept="image/*" (change)="onSelectFileLettre($event)" class="form-control" placeholder="Enter poste" name=" lettre">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                  <div class="col-lg-8">
+                    <div class="col">
+                      <label> Diplome </label>
+                      <input  type="file" accept="image/*" (change)="onSelectFileDiplome($event)" class="form-control" placeholder="Enter poste" name=" Diplome">
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+
+
+
+
+  <br>
+
+  <ng-template pTemplate="footer">
+    <br>
+    <div class="col-md-12 text-right">
+      <div class="col-md-12 text-right">
+        <button class="btn btn-danger mr-3" (click)="annuler()">
+          <i class="pi pi-ban"></i>&nbsp;
+          Annuler
+        </button>
+        <button class="btn btn-primary" (click)="enregistrerDemande(checking())">
+          <i class="pi pi-save"></i>&nbsp;
+          Enregitrer
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+
+</p-dialog>

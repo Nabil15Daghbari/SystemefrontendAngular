@@ -1,0 +1,454 @@
+<div class="row mt-3">
+  <div class="col-lg-4" *ngFor="let offre of listOffres">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title" class="p-3 mb-2 bg-primary text-white">Poste : {{offre.poste}} </div>
+        <hr>
+        <form>
+          <div class="form-group">
+            <label for="input-1">Contrat </label>
+            <div> {{offre.cantrat}} </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group">
+            <label for="input-2">Location </label>
+            <div> {{offre.ville}} </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group">
+            <label for="input-3">Connaissance </label>
+            <div> {{offre.connaissances}} </div>
+          </div>
+
+
+          <hr>
+
+          <div class="form-group">
+            <label for="input-5">Expérience </label>
+            <div> {{offre.experience}} </div>
+          </div>
+
+          <hr>
+
+
+          <button pButton pRipple type="button" icon="" label="Demandes" class="p-button-outlined p-button-rounded"
+            (click)="showResponsiveDialog()" (click)="findAllDemandeByIdOffre(offre.id)"></button>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <button pButton pRipple type="button" icon="" label="Details" class="p-button-outlined p-button-rounded"
+            (click)="showResponsiveDialog1()" (click)="getOffreByID(offre.id)"></button>
+
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!--     details du l'offre                 -->
+<p-dialog header="Détail offre" [(visible)]="displayResponsive1" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '80vw'}" [draggable]="true" [resizable]="true">
+
+  <body class="bg-theme bg-theme8">
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body" *ngIf="offreDto">
+
+            <div class="card-title">
+
+              <div class="form-group row">
+                <div class="col-lg-8">
+                  <div class="col">
+                    {{offreDto.codeOffre}}: {{offreDto.poste}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="col">
+                    Date Expération : <small class="text-success">{{offreDto.dateExpiration}}</small>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+            <hr>
+
+
+
+            <div>
+              <h5>mission : </h5>
+              <p>{{offreDto.mission}}</p>
+            </div>
+
+
+
+            <div>
+              <h6>
+                Domaine : <small class="text-muted">{{offreDto.domaine}}</small>
+                &nbsp; Poste : <small class="text-muted">{{offreDto.poste}}</small>
+                &nbsp;Expérience : <small class="text-muted">{{offreDto.experience}}</small>
+                &nbsp; Compétences : <small class="text-muted">{{offreDto.connaissances}} </small>
+                &nbsp; Nombre de candidatures : <small class="text-muted">{{offreDto.nbrARecruter}} </small>
+                &nbsp;Contrat : <small class="text-muted">{{offreDto.cantrat}} </small>
+                &nbsp; Salaire : <small class="text-muted">{{offreDto.salaire}} &nbsp; DT </small>
+                &nbsp; Ville : <small class="text-muted">{{offreDto.ville}} </small>
+
+
+
+
+              </h6>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </body>
+  <ng-template pTemplate="footer">
+    <br>
+    <button class="btn btn-danger mr-3" (click)="displayResponsive1=false">
+      <i class="pi pi-ban"></i>&nbsp;
+      Annuler
+    </button>
+
+  </ng-template>
+
+</p-dialog>
+
+
+<!-- demande du chaque offre  -->
+<p-dialog header="Liste des demandes" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '80vw'}" [draggable]="true" [resizable]="true">
+
+
+
+  <body class="bg-theme bg-theme8">
+
+    <div class="row mb-1 mr-0 custom-border" *ngFor="let demande of listeDemande">
+
+
+
+      <div class="col-md-5 custom-border-right mb-1 mt-1 ">
+        <div class="col">
+          <div class="row">
+
+            <div class="col-md-1"><i class="icon-user"></i></div>
+            <div class="col-md-11">{{demande.nom}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="icon-user"></i></div>
+            <div class="col-md-11">{{demande.prenom}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-credit-card "></i></div>
+            <div class="col-md-11">{{demande.cin}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-desktop"></i></div>
+            <div class="col-md-11">{{demande.poste}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-phone"></i></div>
+            <div class="col-md-11">{{demande.tele}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-envelope"></i></div>
+            <div class="col-md-10">{{demande.email}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 custom-border-right mb-1 mt-1 ">
+        <div class="col">
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-map-marker"></i></div>
+            <div class="col-md-10">{{demande.adresse}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="pi pi-calendar"></i></div>
+            <div class="col-md-10">{{demande.dateDemande}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="zmdi zmdi-download"></i></div>
+            <div class="col-md-10">Telecharger Diplome</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="zmdi zmdi-download"></i></div>
+            <div class="col-md-10">Telecharger LM </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><i class="zmdi zmdi-download"></i></div>
+            <div class="col-md-10">
+              <a href="******************************" download>Télécharger CV</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-md-2 custom-border-right  p-3 text-center mb-1 mt-2">
+        <h6>état demande</h6>
+        <span class=" badge badge-pill badge-warning">{{demande.etatDemande}} </span> <br><br>
+      </div>
+
+
+      <div class="col-md-2 custom-border-right  p-3 text-center mb-1 mt-2">
+        <!-- <button pButton pRipple label="Contrat" class="p-button-rounded p-button-success mr-2"  ><i class="pi pi-id-card" > &nbsp;</i></button> -->
+        <button pButton pRipple type="button" icon="" label="Modifier Etat" class="p-button-outlined p-button-rounded"
+          (click)="changerEtatDemande()" (click)="selectionnerDemande(demande.id)"></button>
+        <br><br>
+        <button pButton pRipple type="button" icon="" label="&nbsp; Affectation  &nbsp;"
+          class="p-button-outlined p-button-rounded" (click)="selectDemandePourAffectation(demande.id)"
+          (click)="displayResponsive= false"></button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+  </body>
+
+  <ng-template pTemplate="footer">
+    <br>
+    <button class="btn btn-danger mr-3" (click)="displayResponsive=false">
+      <i class="pi pi-ban"></i>&nbsp;
+      Annuler
+    </button>
+
+  </ng-template>
+
+</p-dialog>
+
+
+
+<!-- changer un etat de demande  -->
+<p-dialog header="Changer État de demande" [baseZIndex]="10000" [(visible)]="changerEtat"
+  [breakpoints]="{'960px': '50vw'}" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+
+
+  <body class="bg-theme bg-theme7">
+    <br>
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <form>
+              <div class="form-group row">
+
+                <div class="col-lg-8">
+                  <br>
+                  <div class="col">
+                    <h6> <i class="pi pi-exclamation-circle"></i>&nbsp; Sélectionner un état de la demande : </h6>
+                    <br>
+                    <div class="col-lg-12">
+                      <div class="col">
+                        <select #etat name="Demandes" class="form-control form-control-rounded"
+                          class="autocomplete shadow p-3 mb-5 bg-white rounded" [(ngModel)]="demandeDto.etatDemande">
+                          <option class="autocomplete shadow p-3 mb-5 bg-white rounded"
+                            class="autocomplete shadow p-3 mb-5 bg-white rounded" value=""> Sélectionner un état de la
+                            demande</option>
+                          <option class="autocomplete shadow p-3 mb-5 bg-white rounded" value="EN_COURS">EN COURS DU
+                            TRAITEMENT</option>
+                          <option class="autocomplete shadow p-3 mb-5 bg-white rounded" value="LISTE_ATTENTE">LISTE
+                            ATTENTE</option>
+                          <option class="autocomplete shadow p-3 mb-5 bg-white rounded" value="CONVOQUUE_ENTRETIEN">
+                            CONVOQUUE POUR UN ENTRETIEN</option>
+                          <option class="autocomplete shadow p-3 mb-5 bg-white rounded" value="ADMIS">ADMIS</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+
+  <ng-template pTemplate="footer">
+    <div class="col-md-12 text-right">
+      <button class="btn btn-danger mr-3">
+        <i class="pi pi-ban"></i>&nbsp;
+        Annuler
+      </button>
+      <button class="btn btn-primary" (click)="modifierDemande(checkingUpdateDemande())">
+        <i class="pi pi-save"></i>&nbsp;
+        Enregitrer
+      </button>
+    </div>
+
+  </ng-template>
+
+</p-dialog>
+
+
+
+
+<!-- affectation -->
+<p-dialog header="Affectation dans un service " [baseZIndex]="10000" [(visible)]="affectation"
+  [breakpoints]="{'960px': '50vw'}" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+
+  <body class="bg-theme bg-theme8">
+
+    <body class="bg-theme bg-theme1">
+      <form>
+
+        <br><br>
+
+        <div class="row mt-3">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="form-group row">
+                  <div class="col-lg-7">
+                    <div class="col">
+                      <h6> <i class="pi pi-exclamation-circle"></i>&nbsp; Sélectionner un Service: </h6>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-5">
+                    <div class="col">
+                      <h6> <i class="pi pi-exclamation-circle"></i>&nbsp;Entrer Date D'affectation: </h6>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <br>
+                <div class="form-group row">
+
+                  <div class="col-lg-7">
+                    <div class="col">
+                      <select class="form-control form-control-rounded" name="service"
+                        [(ngModel)]="AffectationDto.nomService">
+                        <option class=" badge badge-pill badge-danger" [value]="null">Selectionner Un Service</option>
+                        <option *ngFor="let service of listServices" [value]="service.nomServices"
+                          class=" badge badge-pill badge-warning"> {{service.nomServices}} </option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-5">
+                    <div class="col">
+                      <input #dateExpiration type="datetime-local" class="form-control form-control-rounded"
+                        placeholder="Entrer date d'expiration" name=" dateExpiration"
+                        [(ngModel)]="AffectationDto.dateAffectation">
+                    </div>
+                  </div>
+
+
+                  <!-- <h1>{{AffectationDto.demandes?.nom}}</h1>   -->
+
+
+                </div>
+
+                <div class="form-group row"></div>
+                
+                <div class="form-group row">
+                  <div class="col-lg-8">
+                    <div class="col">
+                      <h6> <i class="pi pi-exclamation-circle"></i>&nbsp;Nom & Prenom du candidat: </h6>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+
+                  <div class="col-lg-8">   
+                    <div class="col">
+                      <select class="form-control" name="cat" [(ngModel)]="demandeDto.id">
+                        <option [value]="null">Selectionner Candidat</option>
+                        <option *ngFor="let demande of listeDemande" [value]="demande.id">{{ demande.nom }} &nbsp; {{
+                          demande.prenom }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+
+                <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </form>
+
+
+
+    </body>
+
+  </body>
+
+  <ng-template pTemplate="footer">
+    <div class="col-md-12 text-right">
+      <button class="btn btn-danger mr-3" (click)="annuler()">
+        <i class="pi pi-ban"></i>&nbsp;
+        Annuler
+      </button>
+      <button class="btn btn-primary" (click)="SaveAffectation(checkingSaveAffectation())">
+        <i class="pi pi-save"></i>&nbsp;
+        Enregitrer
+      </button>
+    </div>
+
+  </ng-template>
+
+</p-dialog>

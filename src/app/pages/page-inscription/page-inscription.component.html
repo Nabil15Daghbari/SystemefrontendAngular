@@ -1,203 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <body class="bg-theme bg-theme1">
+	<!-- Start wrapper-->
+	<div id="wrapper">
 
-<!-- start loader -->
-   <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
-   <!-- end loader -->
-
-<!-- Start wrapper-->
- <div id="wrapper">
-
-	<div class="card card-authentication1 mx-auto my-4">
-		<div class="card-body">
-		 <div class="card-content p-2">
-		 	<div class="text-center">
-		 		<img src="assets/images/logo-icon.png" alt="logo icon">
-		 	</div>
-		  <div class="card-title text-uppercase text-center py-3">Sign Up</div>
-		    <form>
-			  <div class="form-group">
-			  <label for="exampleInputName" class="sr-only">Name</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Enter Your Name">
-				  <div class="form-control-position">
-					  <i class="icon-user"></i>
-				  </div>
-			   </div>
-			  </div>
-			  <div class="form-group">
-			  <label for="exampleInputEmailId" class="sr-only">Email ID</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="email" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter Your Email ID">
-				  <div class="form-control-position">
-					  <i class="icon-envelope-open"></i>
-				  </div>
-			   </div>
-			  </div>
+		<div class="card card-authentication1 mx-auto my-4">
+			<div class="card-body">
+				<div class="card-content p-2">
+					<div class="text-center">
+						<img src="assets/images/SBI_Logo.png" alt="logo icon">
+					</div>
+					<div class="card-title text-uppercase text-center py-3">Inscription</div>
+				
+					<div class="alert alert-danger" *ngIf="errorsMsg.length > 0">
+						<div *ngFor="let msg of errorsMsg">
+						  <span >{{msg}}</span>
+						</div>
+					  </div>
 
 
-			  <div class="form-group">
-			   <label for="exampleInputPassword" class="sr-only">Password</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				  <div class="form-control-position">
-					  <i class="icon-lock"></i>
-				  </div>
-			   </div>
-			  </div>
+
+					<form>
+						<div class="form-group">
+							<label for="exampleInputName" class="sr-only">Nom</label>
+							<div class="position-relative has-icon-right">
+								<input #nom type="text" id="exampleInputName" class="form-control input-shadow"
+									placeholder="Nom" required name="nom" [(ngModel)]="entrepriseDto.nom">
+								<div class="form-control-position">
+									<i class="icon-user"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputName" class="sr-only">Code fiscal</label>
+							<div class="position-relative has-icon-right">
+								<input #codefiscal type="text" id="exampleInputName" class="form-control input-shadow"
+								placeholder="Code fiscal" required name="codefiscal"  [(ngModel)]="entrepriseDto.codeFiscal">
+								<div class="form-control-position">
+									<i class="icon-user"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputEmailId" class="sr-only">Email </label>
+							<div class="position-relative has-icon-right">
+								<input #email type="email" id="exampleInputEmailId" class="form-control input-shadow"
+								placeholder="E-mail" required [(ngModel)]="entrepriseDto.email" name="email">
+								<div class="form-control-position">
+									<i class="icon-envelope-open"></i>
+								</div>
+							</div>
+						</div>
 
 
-			  <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
+						<div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Adresse</label>
+							<div class="position-relative has-icon-right">
+								<input #adresse type="text" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder=" Adresse" required  [(ngModel)]="entrepriseDto.adresse1" name="adresse">
+								<div class="form-control-position">
+									<i class="pi pi-map-marker"></i>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Pays</label>
+							<div class="position-relative has-icon-right">
+								<input #pays type="text" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder=" Pays" required  [(ngModel)]="entrepriseDto.pays" name="pays">
+								<div class="form-control-position">
+									<i class="pi pi-flag "></i>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Ville</label>
+							<div class="position-relative has-icon-right">
+								<input #ville type="text" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder=" Ville" required  [(ngModel)]="entrepriseDto.ville" name="ville">
+								<div class="form-control-position">
+									<i class="zmdi zmdi-city"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Code Postal</label>
+							<div class="position-relative has-icon-right">
+								<input #codePostal type="number" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder="Code Postal" required [(ngModel)]="entrepriseDto.codePostale" name="codePostal"> 
+								<div class="form-control-position">
+									<i class="zmdi zmdi-code"></i>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="mb-3">
+							<textarea #description type="text" class="form-control" placeholder="Description" [(ngModel)]="entrepriseDto.description" name="description"></textarea>
+						  </div>
+
+						<div class="mb-3">
+							<input #tele type="text" class="form-control" placeholder="Numero de telephone" [(ngModel)]="entrepriseDto.numTel" name="tele">
+						  </div>
+
+						<!-- <div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Mot de passe</label>
+							<div class="position-relative has-icon-right">
+								<input #pwd type="password" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder="Mot de passe" required>
+								<div class="form-control-position">
+									<i class="icon-lock"></i>
+								</div>
+							</div>
+						</div> -->
+
+						<!-- <div class="form-group">
+							<label for="exampleInputPassword" class="sr-only">Confirmer mot de passe</label>
+							<div class="position-relative has-icon-right">
+								<input #cpwd type="password" id="exampleInputPassword" class="form-control input-shadow"
+									placeholder="Confirmer mot de passe"  required>
+								<div class="form-control-position">
+									<i class="icon-lock"></i>
+								</div>
+							</div>
+						</div> -->
+
+
+						<button type="submit"
+							class="btn btn-light btn-block waves-effect waves-light" (click)="inscription(checking())">S'inscrire</button>
+					</form>
 				</div>
-			   </div>
+			</div>
+			<div class="card-footer text-center py-3">
+				<p class="text-warning mb-0">Vous avez déjà un compte ? <a [routerLink]="['/login-Candidat']"> Se connecter
+						ici</a></p>
+			</div>
+		</div>
 
+		<!--Start Back To Top Button-->
+		<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+		<!--End Back To Top Button-->
 
+		<!--start color switcher-->
+		<div class="right-sidebar">
+			<div class="switcher-icon">
+				<i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+			</div>
+			<div class="right-sidebar-content">
 
+				<p class="mb-0">Gaussion Texture</p>
+				<hr>
 
-			   <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
-				</div>
-			   </div>
+				<ul class="switcher">
+					<li id="theme1"></li>
+					<li id="theme2"></li>
+					<li id="theme3"></li>
+					<li id="theme4"></li>
+					<li id="theme5"></li>
+					<li id="theme6"></li>
+				</ul>
 
+				<p class="mb-0">Gradient Background</p>
+				<hr>
 
+				<ul class="switcher">
+					<li id="theme7"></li>
+					<li id="theme8"></li>
+					<li id="theme9"></li>
+					<li id="theme10"></li>
+					<li id="theme11"></li>
+					<li id="theme12"></li>
+					<li id="theme13"></li>
+					<li id="theme14"></li>
+					<li id="theme15"></li>
+				</ul>
 
+			</div>
+		</div>
+		<!--end color switcher-->
 
+	</div>
+	<!--wrapper-->
 
-			   <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
-				</div>
-			   </div>
+	<!-- Bootstrap core JavaScript-->
 
-
-
-
-
-
-			   <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
-				</div>
-			   </div>
-
-
-
-
-
-
-			   <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
-				</div>
-			   </div>
-
-
-
-
-
-
-			   <div class="form-group">
-				<label for="exampleInputPassword" class="sr-only">Password</label>
-				<div class="position-relative has-icon-right">
-				   <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				   <div class="form-control-position">
-					   <i class="icon-lock"></i>
-				   </div>
-				</div>
-			   </div>
-
-
-			  
-			   <div class="form-group">
-			     <div class="icheck-material-white">
-                   <input type="checkbox" id="user-checkbox" checked="" />
-                   <label for="user-checkbox">I Agree With Terms & Conditions</label>
-			     </div>
-			    </div>
-			  
-			 <button type="button" class="btn btn-light btn-block waves-effect waves-light">S'inscrire</button>
-			  
-			
-			 </form>
-		   </div>
-		  </div>
-		  <div class="card-footer text-center py-3">
-		    <p class="text-warning mb-0">Vous avez déjà un compte ? <a [routerLink]="['/login']"> Se connecter ici</a></p>
-		  </div>
-	     </div>
-    
-     <!--Start Back To Top Button-->
-    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-    <!--End Back To Top Button-->
-	
-	<!--start color switcher-->
-   <div class="right-sidebar">
-    <div class="switcher-icon">
-      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-    </div>
-    <div class="right-sidebar-content">
-
-      <p class="mb-0">Gaussion Texture</p>
-      <hr>
-      
-      <ul class="switcher">
-        <li id="theme1"></li>
-        <li id="theme2"></li>
-        <li id="theme3"></li>
-        <li id="theme4"></li>
-        <li id="theme5"></li>
-        <li id="theme6"></li>
-      </ul>
-
-      <p class="mb-0">Gradient Background</p>
-      <hr>
-      
-      <ul class="switcher">
-        <li id="theme7"></li>
-        <li id="theme8"></li>
-        <li id="theme9"></li>
-        <li id="theme10"></li>
-        <li id="theme11"></li>
-        <li id="theme12"></li>
-		<li id="theme13"></li>
-        <li id="theme14"></li>
-        <li id="theme15"></li>
-      </ul>
-      
-     </div>
-   </div>
-  <!--end color switcher-->
-	
-	</div><!--wrapper-->
-	
-  <!-- Bootstrap core JavaScript-->
- 
 </body>
+
 </html>

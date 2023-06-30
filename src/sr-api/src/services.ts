@@ -1,0 +1,13 @@
+export { AffectationService } from './services/affectation.service';
+export { ApiService } from './services/api.service';
+export { AuthenticationService } from './services/authentication.service';
+export { CandidatService } from './services/candidat.service';
+export { ContratService } from './services/contrat.service';
+export { DemandeService } from './services/demande.service';
+export { DocumentService } from './services/document.service';
+export { EntretienService } from './services/entretien.service';
+export { OffreService } from './services/offre.service';
+export { PhotosService } from './services/photos.service';
+export { RecruteurService } from './services/recruteur.service';
+export { ServiceService } from './services/service.service';
+export { UtilisateursService } from './services/utilisateurs.service';

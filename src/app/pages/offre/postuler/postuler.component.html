@@ -1,0 +1,129 @@
+
+
+
+
+	
+  <h5>POSTULER POUR UN OFFRE</h5>
+
+  <div class="row mt-3">
+    <div class="col-lg-6">
+
+   
+
+
+       <div class="card">
+         <div class="card-body">
+         <div class="card-title">information personnelle </div>
+         <hr>
+          <form>
+         <div class="form-group">
+          <label for="input-1">Nom</label>
+          <input type="text" class="form-control" id="input-1" placeholder="Enter poste">
+         </div>
+         <div class="form-group">
+          <label for="input-2">Prenom</label>
+          <input type="text" class="form-control" id="input-2" placeholder="Enter Mission">
+         </div>
+         <div class="form-group">
+          <label for="input-3">email</label>
+          <input type="text" class="form-control" id="input-3" placeholder="Enter les connaissance">
+         </div>
+         <div class="form-group">
+          <label for="input-3">CIN</label>
+          <input type="text" class="form-control" id="input-3" placeholder="Enter les connaissance">
+         </div>
+
+         <div class="form-group">
+          <label for="input-4">Poste</label>
+          <input type="text" class="form-control" id="input-4" placeholder="Enter niveau d'étude">
+         </div>
+         <div class="form-group">
+          <label for="input-5">Telephone</label>
+          <input type="text" class="form-control" id="input-5" placeholder="Enter expérience">
+         </div>
+
+         <div class="form-group">
+          <label for="input-5">adresse</label>
+          <input type="text" class="form-control" id="input-5" placeholder="Enter critères">
+         </div>
+         
+
+
+
+        </form>
+       </div>
+       </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+         <div class="card-body">
+         <div class="card-title">Les Documents </div>
+         <hr>
+          <form>
+            <div class="form-group row">
+
+
+
+              <label class="col-lg-3 col-form-label form-control-label">CV </label>
+              <div class="col-lg-9">
+                  <input class="form-control" type="file">
+              </div>
+
+
+             <br>  <br><br>
+                <label class="col-lg-3 col-form-label form-control-label"> LM</label>
+                <div class="col-lg-9">
+                    <input class="form-control" type="file">
+                </div>
+
+                  <br><br><br>
+                
+                  <label class="col-lg-3 col-form-label form-control-label">Diplome</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="file">
+                  </div>
+
+          </div>
+
+
+          <br>
+          <label class="col-lg-3 col-form-label form-control-label">  image </label>
+          <br><br>
+          <p-fileUpload name="demo[]"  (onUpload)="onUpload($event)"
+          [multiple]="true" accept="image/*" [maxFileSize]="10000000000">
+          <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                  <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+              </ul>
+          </ng-template>
+          </p-fileUpload>
+          
+     
+        
+<br><br><br>
+   
+         <div class="form-group py-2">
+           <div class="icheck-material-white">
+          <input type="checkbox" id="user-checkbox2" checked=""/>
+          <label for="user-checkbox2">J'ACCEPTE LES TERMES ET CONDITIONS</label>
+          </div>
+         </div>
+         <div class="form-group">
+         
+          <button  class="btn btn-light btn-round px-5"  ><i class="icon-lock"></i> Ajouter</button>
+
+        
+        </div>
+        </form>
+       
+    </div>
+  </div><!--End Row-->
+
+
+
+ 
+
+
+
+  
